@@ -1,0 +1,149 @@
+-- -- CREATE TABLE employee (
+-- --   emp_id integer primary key,
+-- --   emp_name varchar(50),
+-- --   emp_age integer,
+-- --   emp_city varchar(50)
+-- -- );
+
+-- -- INSERT INTO employee (emp_id, emp_name, emp_age, emp_city) VALUES 
+-- --   (1, 'John', 25, 'New York'),
+-- --   (2, 'Jane', 30, 'Los Angeles'),
+-- --   (3, 'Bob', 35, 'Chicago'),
+-- --   (4, 'Alice', 28, 'San Francisco'),
+-- --   (5, 'Mike', 32, 'Seattle');
+
+-- -- SELECT * FROM employee;
+
+-- CREATE TABLE students (
+--   id integer primary key,
+--   name varchar(50),
+--   age integer,
+--   city varchar(50)
+-- );
+
+-- INSERT INTO students (id, name, age, city) 
+-- VALUES
+--   (10, 'aarsh', 21, 'surat'),
+--   (20, 'vandan', 12, 'dang'),
+--   (30, 'dhyan', 11, 'mahesana');
+  
+-- SELECT * FROM students;
+
+-- UPDATE students SET city = 'surat' WHERE city = 'dang';
+
+-- SELECT * FROM students;
+
+-- DELETE FROM students WHERE city = 'mahesana';
+
+-- SELECT * FROM students;
+
+-- -- DROP TABLE students;
+
+-- -- SELECT * FROM students;
+
+ACCEPT user_input CHAR PROMPT 'ENTER YOUR NAME: ';
+
+DECLARE 
+  name varchar(10);
+  
+BEGIN
+
+  name := '&user_input';
+  DBMS_OUTPUT.PUT_LINE('Your name is: ' || name);
+
+END;
+/
+
+
+
+-- Create two sample tables for demonstration purposes
+CREATE TABLE table1 (
+    id NUMBER,
+    name VARCHAR2(50)
+);
+
+CREATE TABLE table2 (
+    id NUMBER,
+    name VARCHAR2(50)
+);
+
+-- Insert some sample data into the tables
+INSERT INTO table1 (id, name) VALUES (1, 'John');
+INSERT INTO table1 (id, name) VALUES (2, 'Alice');
+
+INSERT INTO table2 (id, name) VALUES (1, 'John');
+INSERT INTO table2 (id, name) VALUES (4, 'Eva');
+
+-- Perform the UNION operation
+SELECT id, name FROM table1
+UNION
+SELECT id, name FROM table2;
+-- Perform the UNION operation
+SELECT id, name FROM table1
+INTERSECT
+SELECT id, name FROM table2;
+
+
+-- Create two sample tables for demonstration purposes
+CREATE TABLE table11 (
+    id NUMBER,
+    name VARCHAR2(50)
+);
+
+CREATE TABLE table21 (
+    id NUMBER,
+    name VARCHAR2(50)
+);
+
+-- Insert some sample data into the tables
+INSERT INTO table11 (id, name) VALUES (1, 'John');
+INSERT INTO table11 (id, name) VALUES (2, 'Alice');
+
+INSERT INTO table21 (id, name) VALUES (2, 'Alice');
+INSERT INTO table21 (id, name) VALUES (3, 'Bob');
+
+-- Perform the difference operation
+SELECT id, name FROM table11
+WHERE id NOT IN (
+    SELECT id FROM table21
+);
+
+-- Create a sample table for demonstration purposes
+CREATE TABLE original_table (
+    id NUMBER,
+    name VARCHAR2(50)
+);
+
+-- Insert some sample data into the original table
+INSERT INTO original_table (id, name) VALUES (1, 'John');
+INSERT INTO original_table (id, name) VALUES (2, 'Alice');
+
+-- Rename the table
+ALTER TABLE original_table RENAME TO new_table;
+
+-- Select data from the renamed table to verify the operation
+SELECT * FROM new_table;
+
+
+
+-- Create two sample tables for demonstration purposes
+CREATE TABLE table12 (
+    id1 NUMBER,
+    name1 VARCHAR2(50)
+);
+
+CREATE TABLE table22 (
+    id2 NUMBER,
+    name2 VARCHAR2(50)
+);
+
+-- Insert some sample data into the tables
+INSERT INTO table12 (id1, name1) VALUES (1, 'John');
+INSERT INTO table12 (id1, name1) VALUES (2, 'Alice');
+
+INSERT INTO table22 (id2, name2) VALUES (101, 'Bob');
+INSERT INTO table22 (id2, name2) VALUES (102, 'Eva');
+
+-- Perform the Cartesian product operation
+SELECT * FROM table12, table22;
+
