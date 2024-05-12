@@ -1,0 +1,194 @@
+Select * from customers;  
+
++----+----------+-----+-----------+----------+ 
+| ID | NAME     | AGE | ADDRESS   | SALARY   | 
++----+----------+-----+-----------+----------+ 
+|  1 | Ramesh   |  32 | Ahmedabad |  2000.00 | 
+|  2 | Khilan   |  25 | Delhi     |  1500.00 | 
+|  3 | kaushik  |  23 | Kota      |  2000.00 | 
+|  4 | Chaitali |  25 | Mumbai    |  6500.00 | 
+|  5 | Hardik   |  27 | Bhopal    |  8500.00 | 
+|  6 | Komal    |  22 | MP        |  4500.00 | 
++----+----------+-----+-----------+----------+
+
+
+CURSERS
+
+
+DECLARE  
+   total_rows number(2); 
+BEGIN 
+   UPDATE customers 
+   SET salary = salary + 500; 
+   IF sql%notfound THEN 
+      dbms_output.put_line('no customers selected'); 
+   ELSIF sql%found THEN 
+      total_rows := sql%rowcount;
+      dbms_output.put_line( total_rows || ' customers selected '); 
+   END IF;  
+END; 
+/  
+
+
+
+DECLARE  
+   total_rows number(2); 
+BEGIN 
+   UPDATE customers 
+   SET salary = salary + 500; 
+   IF sql%notfound THEN 
+      dbms_output.put_line('no customers selected'); 
+   ELSIF sql%found THEN 
+      total_rows := sql%rowcount;
+      dbms_output.put_line( total_rows || ' customers selected '); 
+   END IF;  
+END; 
+/ 
+
+
+
+
+
+
+FOR LOOP
+
+BEGIN
+    FOR i IN 1..5 LOOP
+        DBMS_OUTPUT.PUT_LINE('Value of i: ' || i);
+    END LOOP;
+END;
+
+
+
+
+WHILE LOOP
+
+DECLARE
+    i NUMBER := 1;
+BEGIN
+    WHILE i <= 5 LOOP
+        DBMS_OUTPUT.PUT_LINE('Value of i: ' || i);
+        i := i + 1;
+    END LOOP;
+END;
+
+
+
+LOOP EXIT LOOP
+
+DECLARE
+    i NUMBER := 1;
+BEGIN
+    LOOP
+        EXIT WHEN i > 5;
+        DBMS_OUTPUT.PUT_LINE('Value of i: ' || i);
+        i := i + 1;
+    END LOOP;
+END;
+
+
+
+SIMPLE IF
+
+DECLARE
+    x NUMBER := 10;
+BEGIN
+    IF x > 0 THEN
+        dbms_output.put_line('x is positive');
+    END IF;
+END;
+
+
+
+IF ELSE
+
+DECLARE
+    x NUMBER := -5;
+BEGIN
+    IF x > 0 THEN
+        dbms_output.put_line('x is positive');
+    ELSE
+        dbms_output.put_line('x is non-positive');
+    END IF;
+END;
+
+
+IF ELSIF ELSE
+
+DECLARE
+    x NUMBER := -5;
+BEGIN
+    IF x > 0 THEN
+        dbms_output.put_line('x is positive');
+    ELSIF x = 0 THEN
+        dbms_output.put_line('x is zero');
+    ELSE
+        dbms_output.put_line('x is negative');
+    END IF;
+END;
+
+
+
+NESTED IF
+
+DECLARE
+    x NUMBER := 10;
+    y NUMBER := 5;
+BEGIN
+    IF x > 0 THEN
+        IF y > 0 THEN
+            dbms_output.put_line('Both x and y are positive');
+        ELSE
+            dbms_output.put_line('x is positive but y is not');
+        END IF;
+    ELSE
+        dbms_output.put_line('x is non-positive');
+    END IF;
+END;
+
+
+
+IF CONDITION WITH LOGICAL OPERATERS
+
+DECLARE
+    x NUMBER := 10;
+    y NUMBER := 5;
+BEGIN
+    IF x > 0 AND y > 0 THEN
+        dbms_output.put_line('Both x and y are positive');
+    ELSE
+        dbms_output.put_line('At least one of x and y is non-positive');
+    END IF;
+END;
+
+
+GETTING VALUE FROM USER
+
+ACCEPT var_name PROMPT 'Enter a value: ';
+
+DECLARE
+    x NUMBER := &var_name;
+BEGIN
+    dbms_output.put_line('The value you entered is: ' || x);
+END;
+/
+
+
+
+SWITCH CASE
+
+DECLARE
+    x NUMBER := 2;
+BEGIN
+    CASE x
+        WHEN 1 THEN
+            dbms_output.put_line('x is 1');
+        WHEN 2 THEN
+            dbms_output.put_line('x is 2');
+        WHEN 3 THEN
+            dbms_output.put_line('x is 3');
+        ELSE
+            dbms_output.put_line('x is not 1, 2, or 3');
+    END CASE;
+END;
+/

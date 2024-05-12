@@ -1,0 +1,42 @@
+CREATE OR REPLACE FUNCTION add_numbers(
+    x INTEGER,
+    y INTEGER
+) RETURN INTEGER
+IS 
+    z INTEGER;
+BEGIN
+    z := x + y;
+    RETURN z;
+END add_numbers;
+/
+
+DECLARE
+    a INTEGER := 12;
+    b INTEGER := 21;
+    c INTEGER;
+BEGIN
+    -- c := a + b;
+    c := add_numbers(a, b); -- Added a semicolon here
+    dbms_output.put_line('The sum of ' || a || ' and ' || b || ' is: ' || c);
+
+    FOR i IN 1..5 LOOP
+        dbms_output.put_line(i);
+    END LOOP;
+    
+    WHILE a > 0 LOOP
+        dbms_output.put_line(a);
+        IF a = 10 THEN
+            EXIT;
+        END IF;
+        a := a - 1;
+    END LOOP;
+    
+    IF a > 18 THEN
+        dbms_output.put_line('You are eligible to vote');
+    ELSIF a = 18 THEN
+        dbms_output.put_line('Go and get your voter id');
+    ELSE
+        dbms_output.put_line('You cannot give a vote');
+    END IF;
+END;
+/
