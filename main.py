@@ -37,8 +37,8 @@ print(f"Value at (0, 0): {value_2}")
 # read csv
 student_data = pandas.read_csv("student_data.csv")
 
-# x = student_data.iloc[0:2]
-# print(x)
+x = student_data.iloc[0:2]
+print(x)
 
 y = student_data.loc[2, "area"]
 print(y)
