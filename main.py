@@ -10,7 +10,7 @@ dictionary = {
 
 # Create a DataFrame
 dataframe_1 = pandas.DataFrame(dictionary, index=['X', 'Y', 'Z'])
-# print(dataframe_1)
+print(dataframe_1)
 
 # Select a subset of rows and columns using label-based indexing
 subset_1 = dataframe_1.loc[['X', 'Y'], ['A', 'B']]
@@ -24,7 +24,7 @@ print(f"Value at (X, A): {value_1}\n")
 
 # Create a DataFrame
 dataframe_2 = pandas.DataFrame(dictionary)
-# print(dataframe_2)
+print(dataframe_2)
 
 # Select a subset of rows and columns using integer-based indexing
 subset_2 = dataframe_2.iloc[0:2, 0:2]
